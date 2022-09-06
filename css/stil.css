@@ -1,0 +1,321 @@
+/* General Styles */
+html{
+   /*background:url(http://phutora.com/img/friends3.jpg) no-repeat;*/
+   background-size: cover;
+   height:100%;
+   background-color: #000;
+}
+* {
+   box-sizing:border-box;
+   -webkit-box-sizing:border-box;
+   -moz-box-sizing:border-box;
+   -webkit-font-smoothing:antialiased;
+   -moz-font-smoothing:antialiased;
+   -o-font-smoothing:antialiased;
+   font-smoothing:antialiased;
+   text-rendering:optimizeLegibility;
+}
+body {
+   color: #C0C0C0;
+   font-family: Arial, san-serif;
+}
+
+
+/* Contact Form Styles */
+h1 {
+   margin: 10px 0 0 0;
+}
+h4{
+   margin: 0 0 20px 0;
+}
+#contact-form {
+   background-color:rgba(72,72,72,0.7);
+   padding: 10px 20px 30px 20px;
+   max-width:100%;
+   float: left;
+   left: 50%;
+   position: absolute;
+   margin-top:30px;
+   margin-left: -260px;
+   border-radius:7px;
+   -webkit-border-radius:7px;
+   -moz-border-radius:7px;
+}
+#contact-form input,   
+#contact-form select,   
+#contact-form textarea,   
+#contact-form label { 
+   font-size: 15px;  
+   margin-bottom: 2px;
+   font-family: Arial, san-serif;
+} 
+#contact-form input,      
+#contact-form textarea { 
+   width:100%;
+   background: #fff;
+   border: 0; 
+   -moz-border-radius: 4px;  
+   -webkit-border-radius: 4px;  
+   border-radius: 4px;
+   margin-bottom: 25px;  
+   padding: 5px;  
+}  
+
+#contact-form select
+{ 
+   width:50%;
+   background: #fff;
+   border: 0; 
+   -moz-border-radius: 4px;  
+   -webkit-border-radius: 4px;  
+   border-radius: 4px;
+   margin-bottom: 25px;  
+   padding: 5px;  
+}  
+
+#contact-form input:focus,   
+#contact-form select:focus,   
+#contact-form textarea:focus {  
+   background-color: #E5E6E7; 
+}  
+#contact-form textarea {
+   width:100%;
+   height: 150px;
+}
+#contact-form button[type="submit"] {
+   cursor:pointer;
+   width:100%;
+   border:none;
+   background:#991D57;
+   background-image:linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+   background-image:-moz-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+   background-image:-webkit-linear-gradient(bottom, #8C1C50 0%, #991D57 52%);
+   color:#FFF;
+   margin:0 0 5px;
+   padding:10px;
+   border-radius:5px;
+}
+#contact-form button[type="submit"]:hover {
+   background-image:linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+   background-image:-moz-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+   background-image:-webkit-linear-gradient(bottom, #9C215A 0%, #A82767 52%);
+   -webkit-transition:background 0.3s ease-in-out;
+   -moz-transition:background 0.3s ease-in-out;
+   transition:background-color 0.3s ease-in-out;
+}
+#contact-form button[type="submit"]:active {
+   box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
+}
+input:required, textarea:required {  
+   box-shadow: none;
+   -moz-box-shadow: none;  
+   -webkit-box-shadow: none;  
+   -o-box-shadow: none;  
+} 
+#contact-form .required {  
+   font-weight:bold;  
+   color: #E5E6E7;      
+}
+
+/* Hide success/failure message
+   (especially since the php is missing) */
+#failure, #success {
+   color: #6EA070; 
+   display:none;  
+}
+
+/* Make form look nice on smaller screens */
+@media only screen and (max-width: 580px) {
+   #contact-form{
+      left: 3%;
+      margin-right: 3%;
+      width: 88%;
+      margin-left: 0;
+      padding-left: 3%;
+      padding-right: 3%;
+   }
+}
+
+
+/*novi css*/	
+	/* css tablica */
+	
+		/* info (hed, dek, source, credit) */
+.rg-container {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 1em 0.5em;
+  color: #222;
+      background-color: white;
+}
+.rg-header {
+  margin-bottom: 1em;
+  text-align: left;
+}
+
+.rg-header > * {
+  display: block;
+}
+.rg-hed {
+  font-weight: bold;
+  font-size: 1.4em;
+}
+.rg-dek {
+  font-size: 1em;
+}
+
+.rg-success {
+      font-size: 1em;
+    color: #99d240;
+    font-weight: bolder;
+}
+
+.rg-source {
+  margin: 0;
+  font-size: 0.75em;
+  text-align: right;
+}.rg-source .naslov {  font-size: 14px;    float: left;    margin-left: 7px;    margin-top: -25px;    text-transform: uppercase;    font-weight: bold;}
+.rg-source .pre-colon {
+  font-size: 14px;
+}
+
+.rg-source .post-colon {
+  font-weight: bold;  font-size: 15px;
+}
+
+/* table */
+table.rg-table {
+  width: 100%;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table.rg-table tr {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-align: left;
+  color: #333;
+}
+table.rg-table thead {
+  border-bottom: 3px solid #ddd;
+}
+table.rg-table tr {
+  border-bottom: 1px solid #ddd;
+  color: #222;
+}
+table.rg-table tr.highlight {
+  background-color: #dcf1f0 !important;
+}
+table.rg-table.zebra tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+table.rg-table th {
+  font-weight: bold;
+  padding: 0.35em;
+  font-size: 0.9em;
+}
+table.rg-table td {
+  padding: 0.35em;
+  font-size: 0.9em;
+}table.rg-table a:link, a:visited {  color: #60bef5 !important;  font-size: 0.9em;    font-weight: bold;}
+table.rg-table .highlight td {
+  font-weight: bold;
+}
+table.rg-table th.number,
+td.number {
+  text-align: right;
+}
+
+/* media queries */
+@media screen and (max-width: 600px) {
+  .rg-container {
+    max-width: 600px;
+    margin: 0 auto;
+	    background-color: white;
+  }      .rg-container form{    max-width: 300px;    margin: 0 auto;	background-color: white;		  }    .rg-container form .zavrseno {     font-weight:bold;     	}  .rg-container form select {     border: 1px solid black !important; 	padding: 5px;	}	  .rg-container form input {     border: 1px solid black !important; 	padding: 5px !important;	width: 70px !important;	float: right;	margin-right: 80px;	background-color: #8cc9ed !important;	}
+  table.rg-table {
+    width: 100%;
+  }
+  table.rg-table tr.hide-mobile,
+  table.rg-table th.hide-mobile,
+  table.rg-table td.hide-mobile {
+    display: none;
+  }
+  table.rg-table thead {
+    display: none;
+  }
+  table.rg-table tbody {
+    width: 100%;
+  }
+  table.rg-table tr,
+  table.rg-table th,
+  table.rg-table td {
+    display: block;
+    padding: 0;
+  }
+  table.rg-table tr {
+    border-bottom: none;
+    margin: 0 0 1em 0;
+    padding: 0.5em;
+  }
+  table.rg-table tr.highlight {
+    background-color: inherit !important;
+  }
+  table.rg-table.zebra tr:nth-child(even) {
+    background-color: transparent;
+  }
+  table.rg-table.zebra td:nth-child(even) {
+    background-color: #f6f6f6;
+  }
+  table.rg-table tr:nth-child(even) {
+    background-color: transparent;
+  }
+  table.rg-table td {
+    padding: 0.5em 0 0.25em 0;
+    border-bottom: 1px dotted #ccc;
+    text-align: right;
+  }
+  table.rg-table td[data-title]:before {
+    content: attr(data-title);
+    font-weight: bold;
+    display: inline-block;
+    content: attr(data-title);
+    float: left;
+    margin-right: 0.5em;
+    font-size: 0.95em;
+  }
+  table.rg-table td:last-child {
+    padding-right: 0;
+    border-bottom: 2px solid #ccc;
+  }
+  table.rg-table td:empty {
+    display: none;
+  }
+  table.rg-table .highlight td {
+    background-color: inherit;
+    font-weight: normal;
+  }
+}
+
+.obicni a:link, a:visited {
+  background-color: #991D57;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.obicni a:hover, a:active {
+  background-color: #991D57;
+}
