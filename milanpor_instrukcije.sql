@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 15, 2022 at 09:42 AM
--- Server version: 5.7.38
+-- Generation Time: Sep 20, 2022 at 09:27 AM
+-- Server version: 5.7.39
 -- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -31,14 +31,16 @@ USE `milanpor_instrukcije`;
 --
 
 DROP TABLE IF EXISTS `instrukcije`;
-CREATE TABLE `instrukcije` (
-  `IdInstrukcija` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `instrukcije` (
+  `IdInstrukcija` int(11) NOT NULL AUTO_INCREMENT,
   `DatumInstrukcije` datetime DEFAULT NULL,
   `Iznos` decimal(7,2) DEFAULT NULL,
   `IdUsluga` int(11) DEFAULT NULL,
   `Opis` mediumtext,
-  `DatumAzur` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `DatumAzur` datetime DEFAULT NULL,
+  PRIMARY KEY (`IdInstrukcija`),
+  KEY `fk_usluga` (`IdUsluga`)
+) ENGINE=MyISAM AUTO_INCREMENT=859 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `instrukcije`
@@ -881,7 +883,22 @@ INSERT INTO `instrukcije` (`IdInstrukcija`, `DatumInstrukcije`, `Iznos`, `IdUslu
 (840, '2022-07-12 00:00:00', '200.00', 1, 'Stock', '2022-07-12 13:29:00'),
 (841, '2022-07-13 00:00:00', '340.00', 8, 'Romano Dulcic', '2022-07-13 15:00:19'),
 (842, '2022-07-14 00:00:00', '200.00', 1, 'Asistencija ispit', '2022-07-14 18:12:55'),
-(843, '2022-07-15 00:00:00', '170.00', 8, 'Romano Dulcic', '2022-07-15 07:30:52');
+(843, '2022-07-15 00:00:00', '170.00', 8, 'Romano Dulcic', '2022-07-15 07:30:52'),
+(844, '2022-08-16 00:00:00', '300.00', 1, 'Iwa projekt Luka1', '2022-08-16 09:22:25'),
+(845, '2022-08-18 00:00:00', '450.00', 1, 'Php iwa kuzmic 1.dio', '2022-08-20 14:16:22'),
+(846, '2022-08-21 00:00:00', '400.00', 22, 'Luka 1 dio', '2022-08-21 16:52:40'),
+(847, '2022-08-22 00:00:00', '300.00', 1, 'Luka Peric 2', '2022-08-22 21:27:42'),
+(848, '2022-08-22 00:00:00', '700.00', 18, 'Orlovic rad', '2022-08-22 21:28:07'),
+(849, '2022-08-29 00:00:00', '250.00', 22, 'Mihael drugi dio', '2022-08-29 11:13:44'),
+(850, '2022-08-30 00:00:00', '400.00', 1, 'Damir Kuzmić 2', '2022-08-30 09:04:47'),
+(851, '2022-08-30 00:00:00', '1000.00', 3, 'Ravel instrukcije', '2022-08-30 12:49:56'),
+(852, '2022-09-05 00:00:00', '150.00', 1, 'Marija Tadić', '2022-09-05 09:25:07'),
+(853, '2022-09-06 00:00:00', '800.00', 18, 'Tomislav Orlović', '2022-09-06 07:24:16'),
+(854, '2022-09-06 00:00:00', '550.00', 9, 'Web stranica', '2022-09-07 14:28:24'),
+(855, '2022-09-09 00:00:00', '170.00', 1, 'Ivan Bačić', '2022-09-09 09:44:13'),
+(856, '2022-09-10 00:00:00', '300.00', 1, 'Rad servis 1', '2022-09-10 22:06:32'),
+(857, '2022-09-15 00:00:00', '170.00', 1, 'Ivan Bačić instrukcije', '2022-09-15 12:22:23'),
+(858, '2022-09-16 00:00:00', '200.00', 1, 'Toni Ojdanić', '2022-09-16 07:19:44');
 
 -- --------------------------------------------------------
 
@@ -890,8 +907,8 @@ INSERT INTO `instrukcije` (`IdInstrukcija`, `DatumInstrukcije`, `Iznos`, `IdUslu
 --
 
 DROP TABLE IF EXISTS `korisnik`;
-CREATE TABLE `korisnik` (
-  `IdKor` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `korisnik` (
+  `IdKor` int(11) NOT NULL AUTO_INCREMENT,
   `Ime` varchar(30) DEFAULT NULL,
   `Prezime` varchar(30) DEFAULT NULL,
   `KorIme` varchar(30) DEFAULT NULL,
@@ -900,8 +917,9 @@ CREATE TABLE `korisnik` (
   `DatumRodjenja` date DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `Uid` varchar(150) DEFAULT NULL,
-  `Aktivan` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `Aktivan` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IdKor`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `korisnik`
@@ -917,14 +935,15 @@ INSERT INTO `korisnik` (`IdKor`, `Ime`, `Prezime`, `KorIme`, `Sifra`, `SifraP`, 
 --
 
 DROP TABLE IF EXISTS `koverta`;
-CREATE TABLE `koverta` (
-  `IdUnos` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `koverta` (
+  `IdUnos` int(11) NOT NULL AUTO_INCREMENT,
   `Stanje` decimal(7,2) DEFAULT NULL,
   `DatumPromjena` date DEFAULT NULL,
   `Iznos` decimal(7,2) DEFAULT NULL,
   `TipPromjene` varchar(10) DEFAULT NULL,
-  `Opis` varchar(256) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `Opis` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`IdUnos`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `koverta`
@@ -953,8 +972,8 @@ INSERT INTO `koverta` (`IdUnos`, `Stanje`, `DatumPromjena`, `Iznos`, `TipPromjen
 --
 
 DROP TABLE IF EXISTS `potencijalneinstrukcije`;
-CREATE TABLE `potencijalneinstrukcije` (
-  `IdInstrukcija` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `potencijalneinstrukcije` (
+  `IdInstrukcija` int(11) NOT NULL AUTO_INCREMENT,
   `NazivInstrukcija` varchar(50) DEFAULT NULL,
   `UslugaId` int(11) DEFAULT NULL,
   `DatumInstrukcije` datetime DEFAULT NULL,
@@ -962,8 +981,9 @@ CREATE TABLE `potencijalneinstrukcije` (
   `EmailKlijent` varchar(30) DEFAULT NULL,
   `TelefonKlijent` varchar(30) DEFAULT NULL,
   `Zavrseno` varchar(2) DEFAULT NULL,
-  `DatumZavrsetka` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `DatumZavrsetka` date DEFAULT NULL,
+  PRIMARY KEY (`IdInstrukcija`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `potencijalneinstrukcije`
@@ -983,11 +1003,12 @@ INSERT INTO `potencijalneinstrukcije` (`IdInstrukcija`, `NazivInstrukcija`, `Usl
 --
 
 DROP TABLE IF EXISTS `primanja`;
-CREATE TABLE `primanja` (
-  `IdPrimanja` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `primanja` (
+  `IdPrimanja` int(11) NOT NULL AUTO_INCREMENT,
   `Iznos` decimal(7,2) DEFAULT NULL,
-  `DatumPrimanja` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `DatumPrimanja` date NOT NULL,
+  PRIMARY KEY (`IdPrimanja`)
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `primanja`
@@ -1072,7 +1093,9 @@ INSERT INTO `primanja` (`IdPrimanja`, `Iznos`, `DatumPrimanja`) VALUES
 (78, '16932.10', '2022-04-04'),
 (80, '22234.75', '2022-05-03'),
 (81, '16677.37', '2022-06-03'),
-(82, '16773.18', '2022-07-04');
+(82, '16773.18', '2022-07-04'),
+(83, '20793.15', '2022-08-02'),
+(84, '16663.47', '2022-09-02');
 
 -- --------------------------------------------------------
 
@@ -1081,8 +1104,8 @@ INSERT INTO `primanja` (`IdPrimanja`, `Iznos`, `DatumPrimanja`) VALUES
 --
 
 DROP TABLE IF EXISTS `projekti`;
-CREATE TABLE `projekti` (
-  `ProjektId` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `projekti` (
+  `ProjektId` int(11) NOT NULL AUTO_INCREMENT,
   `Naziv` varchar(30) DEFAULT NULL,
   `UslugaId` int(11) DEFAULT NULL,
   `RokIsporuke` date DEFAULT NULL,
@@ -1090,8 +1113,9 @@ CREATE TABLE `projekti` (
   `EmailKlijent` varchar(50) DEFAULT NULL,
   `Zavrseno` varchar(2) DEFAULT NULL,
   `DatumZavrsetka` date DEFAULT NULL,
-  `Cijena` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Cijena` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`ProjektId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `projekti`
@@ -1116,12 +1140,13 @@ INSERT INTO `projekti` (`ProjektId`, `Naziv`, `UslugaId`, `RokIsporuke`, `NazivK
 --
 
 DROP TABLE IF EXISTS `projektinaplata`;
-CREATE TABLE `projektinaplata` (
-  `IdPN` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `projektinaplata` (
+  `IdPN` int(11) NOT NULL AUTO_INCREMENT,
   `ProjektId` int(11) DEFAULT NULL,
   `UplacenIznos` decimal(5,2) DEFAULT NULL,
-  `DatumUplate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `DatumUplate` date DEFAULT NULL,
+  PRIMARY KEY (`IdPN`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `projektinaplata`
@@ -1151,10 +1176,11 @@ INSERT INTO `projektinaplata` (`IdPN`, `ProjektId`, `UplacenIznos`, `DatumUplate
 --
 
 DROP TABLE IF EXISTS `trosak`;
-CREATE TABLE `trosak` (
-  `IdTrosak` int(11) NOT NULL,
-  `Naziv` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `trosak` (
+  `IdTrosak` int(11) NOT NULL AUTO_INCREMENT,
+  `Naziv` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`IdTrosak`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `trosak`
@@ -1176,7 +1202,8 @@ INSERT INTO `trosak` (`IdTrosak`, `Naziv`) VALUES
 (13, 'Kino'),
 (14, 'Teretana'),
 (15, 'Donacija'),
-(16, 'Izvanredni trošak');
+(16, 'Izvanredni trošak'),
+(17, 'Ljetovanje');
 
 -- --------------------------------------------------------
 
@@ -1185,14 +1212,16 @@ INSERT INTO `trosak` (`IdTrosak`, `Naziv`) VALUES
 --
 
 DROP TABLE IF EXISTS `trosaknastanak`;
-CREATE TABLE `trosaknastanak` (
-  `IdTrosNast` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `trosaknastanak` (
+  `IdTrosNast` int(11) NOT NULL AUTO_INCREMENT,
   `DatumTrosak` datetime DEFAULT NULL,
   `Iznos` decimal(7,2) DEFAULT NULL,
   `IdTrosak` int(11) DEFAULT NULL,
   `Opis` text,
-  `DatumAzur` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `DatumAzur` datetime DEFAULT NULL,
+  PRIMARY KEY (`IdTrosNast`),
+  KEY `fk_trosak` (`IdTrosak`)
+) ENGINE=MyISAM AUTO_INCREMENT=156 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `trosaknastanak`
@@ -1336,7 +1365,23 @@ INSERT INTO `trosaknastanak` (`IdTrosNast`, `DatumTrosak`, `Iznos`, `IdTrosak`, 
 (136, '2019-04-01 00:00:00', '28.00', 2, 'Ručak u firmi', '2019-04-02 15:17:40'),
 (137, '2019-04-01 00:00:00', '45.00', 12, 'Pizza kafić', '2019-04-02 15:18:27'),
 (138, '2019-04-02 00:00:00', '28.00', 2, 'Ručak', '2019-04-02 15:19:28'),
-(139, '2019-04-02 00:00:00', '20.00', 1, 'Kava SMS', '2019-04-03 09:07:13');
+(139, '2019-04-02 00:00:00', '20.00', 1, 'Kava SMS', '2019-04-03 09:07:13'),
+(140, '2022-06-29 00:00:00', '785.00', 11, 'Petrol', '2022-07-15 08:45:36'),
+(141, '2022-07-09 00:00:00', '558.00', 11, 'Crodux derivati', '2022-07-15 08:46:49'),
+(142, '2022-07-14 00:00:00', '496.00', 11, 'Crodux derivati', '2022-07-15 08:47:13'),
+(143, '2022-07-21 00:00:00', '215.00', 17, 'Kobasice', '2022-07-21 08:59:41'),
+(144, '2022-07-21 00:00:00', '730.00', 11, 'OMV', '2022-07-21 17:51:34'),
+(145, '2022-07-21 00:00:00', '435.00', 17, 'Eurospin', '2022-07-21 17:54:20'),
+(146, '2022-07-28 00:00:00', '643.00', 11, 'Crodux Zadar', '2022-07-28 09:47:37'),
+(147, '2022-08-01 00:00:00', '670.00', 11, 'Crodux Dugopolje', '2022-08-07 07:01:28'),
+(148, '2022-08-15 00:00:00', '600.00', 11, 'OMV Dugopolje', '2022-08-18 09:55:41'),
+(149, '2022-08-07 00:00:00', '510.00', 11, 'Medjugorje', '2022-08-18 09:58:02'),
+(150, '2022-08-25 00:00:00', '621.00', 11, 'Crodux derivati', '2022-08-28 13:19:39'),
+(151, '2022-08-30 00:00:00', '200.00', 11, 'Crodux', '2022-08-30 08:28:39'),
+(152, '2022-09-01 00:00:00', '576.00', 11, 'Crodux Dugopolje', '2022-09-04 05:46:15'),
+(153, '2022-09-06 00:00:00', '550.00', 11, 'Crodux ZG', '2022-09-06 17:36:55'),
+(154, '2022-09-15 00:00:00', '200.00', 11, 'Crodux ZG', '2022-09-17 07:16:59'),
+(155, '2022-09-17 00:00:00', '735.00', 11, 'Crodux Zadar', '2022-09-17 20:54:48');
 
 -- --------------------------------------------------------
 
@@ -1345,10 +1390,11 @@ INSERT INTO `trosaknastanak` (`IdTrosNast`, `DatumTrosak`, `Iznos`, `IdTrosak`, 
 --
 
 DROP TABLE IF EXISTS `usluga`;
-CREATE TABLE `usluga` (
-  `IdUsluga` int(11) NOT NULL,
-  `Naziv` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `usluga` (
+  `IdUsluga` int(11) NOT NULL AUTO_INCREMENT,
+  `Naziv` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`IdUsluga`)
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `usluga`
@@ -1378,136 +1424,6 @@ INSERT INTO `usluga` (`IdUsluga`, `Naziv`) VALUES
 (24, 'Jquery'),
 (25, 'Predavanje fakultet'),
 (26, 'Office 365');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `instrukcije`
---
-ALTER TABLE `instrukcije`
-  ADD PRIMARY KEY (`IdInstrukcija`),
-  ADD KEY `fk_usluga` (`IdUsluga`);
-
---
--- Indexes for table `korisnik`
---
-ALTER TABLE `korisnik`
-  ADD PRIMARY KEY (`IdKor`);
-
---
--- Indexes for table `koverta`
---
-ALTER TABLE `koverta`
-  ADD PRIMARY KEY (`IdUnos`);
-
---
--- Indexes for table `potencijalneinstrukcije`
---
-ALTER TABLE `potencijalneinstrukcije`
-  ADD PRIMARY KEY (`IdInstrukcija`);
-
---
--- Indexes for table `primanja`
---
-ALTER TABLE `primanja`
-  ADD PRIMARY KEY (`IdPrimanja`);
-
---
--- Indexes for table `projekti`
---
-ALTER TABLE `projekti`
-  ADD PRIMARY KEY (`ProjektId`);
-
---
--- Indexes for table `projektinaplata`
---
-ALTER TABLE `projektinaplata`
-  ADD PRIMARY KEY (`IdPN`);
-
---
--- Indexes for table `trosak`
---
-ALTER TABLE `trosak`
-  ADD PRIMARY KEY (`IdTrosak`);
-
---
--- Indexes for table `trosaknastanak`
---
-ALTER TABLE `trosaknastanak`
-  ADD PRIMARY KEY (`IdTrosNast`),
-  ADD KEY `fk_trosak` (`IdTrosak`);
-
---
--- Indexes for table `usluga`
---
-ALTER TABLE `usluga`
-  ADD PRIMARY KEY (`IdUsluga`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `instrukcije`
---
-ALTER TABLE `instrukcije`
-  MODIFY `IdInstrukcija` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=844;
-
---
--- AUTO_INCREMENT for table `korisnik`
---
-ALTER TABLE `korisnik`
-  MODIFY `IdKor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `koverta`
---
-ALTER TABLE `koverta`
-  MODIFY `IdUnos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `potencijalneinstrukcije`
---
-ALTER TABLE `potencijalneinstrukcije`
-  MODIFY `IdInstrukcija` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `primanja`
---
-ALTER TABLE `primanja`
-  MODIFY `IdPrimanja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- AUTO_INCREMENT for table `projekti`
---
-ALTER TABLE `projekti`
-  MODIFY `ProjektId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `projektinaplata`
---
-ALTER TABLE `projektinaplata`
-  MODIFY `IdPN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `trosak`
---
-ALTER TABLE `trosak`
-  MODIFY `IdTrosak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `trosaknastanak`
---
-ALTER TABLE `trosaknastanak`
-  MODIFY `IdTrosNast` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
-
---
--- AUTO_INCREMENT for table `usluga`
---
-ALTER TABLE `usluga`
-  MODIFY `IdUsluga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
